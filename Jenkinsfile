@@ -36,10 +36,11 @@ pipeline {
              docker images
              docker tag chelibane/jsapp:$BUILD_NUMBER harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER
              docker push harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER
-             
-             docker image rm chelibane/jsapp:36 chelibane/jsapp:37 chelibane/jsapp:38 chelibane/jsapp:35 harbor.asaru.info/public-01/test-netflix:0.0.36  harbor.asaru.info/public-01/test-netflix:0.0.37 
-             
              docker image rm harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER chelibane/jsapp:$BUILD_NUMBER
+             
+             docker image rm chelibane/jsapp:38 chelibane/jsapp:40 harbor.asaru.info/public-01/test-netflix:0.0.40 
+             
+             
              '''
            } 
         }
