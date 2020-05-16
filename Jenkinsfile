@@ -24,7 +24,7 @@ pipeline {
            
            echo ====+=====================================+=====
           
-           docker image rm 192.168.1.81:5000/justme/myweb:19 192.168.1.81:5000/justme/myweb:24 
+           docker image rm 192.168.1.81:5000/justme/myweb:25 
            docker images 
            
           '''
@@ -36,7 +36,13 @@ pipeline {
     stage('Harbor') {
       steps {
         script {
-          sh 'docker login -u admin -p Harbor12345 harbor.asaru.info'
+          // sh 'docker login -u admin -p Harbor12345 harbor.asaru.info'
+          // withCredentials([usernameColonPassword(credentialsId: 'harbor', variable: 'HarborCredentilas')]) {
+          // some block
+          // }
+           withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
+           sh 'docker login -u u -p p harbor.asaru.info'
+           } 
         }
       }
     }
