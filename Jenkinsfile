@@ -3,6 +3,7 @@ pipeline {
   environment {
     registry = "192.168.1.81:5000/justme/myweb"
     dockerImage = ""
+    dockerImg = ""
   }
 
   agent any
@@ -19,6 +20,7 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImg = docker.tag  dokerImage harbor.asaru.info/front-01/myweb:latest
         }
       }
     }
@@ -27,7 +29,7 @@ pipeline {
       steps{
         script {
             docker.withDockerRegistry(credentialsId: 'harbor', url: 'https://harbor.asaru.info/front-01/testing') {
-            dockerImage.push()
+            dockerImg.push()
           }
         }
       }
