@@ -5,7 +5,7 @@ pipeline {
     dockerImage = ""
   }
 
-  agent {label 'jenkins-jenkins-slave'}
+  agent {label 'jenkins-docker-slave'}
 
   stages {
 
