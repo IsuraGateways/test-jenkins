@@ -3,10 +3,9 @@ pipeline {
   environment {
     registry = "chelibane/jsapp"
     dockerImage = ""
-    dockerImg = "s"
   }
 
-  agent any
+  agent {label 'jenkins/jenkins-jenkins-slave'}
 
   stages {
 
