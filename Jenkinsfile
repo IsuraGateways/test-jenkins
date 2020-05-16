@@ -33,13 +33,13 @@ pipeline {
            withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
            sh '''
              docker login -u $u -p $p harbor.asaru.info
-             docker images
+             
              docker tag chelibane/jsapp:$BUILD_NUMBER harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER
              docker push harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER
              docker image rm harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER chelibane/jsapp:$BUILD_NUMBER
              
              
-             docker chelibane/jsapp:40 harbor.asaru.info/public-01/test-netflix:0.0.40 
+             docker images
              
              
              '''
