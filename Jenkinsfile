@@ -21,7 +21,7 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           sh '''
-           docker tag  dokerImage harbor.asaru.info/front-01/myweb:latest
+           docker tag  192.168.1.81:5000/justme/myweb:15 harbor.asaru.info/front-01/myweb:latest
           '''
         }
       }
