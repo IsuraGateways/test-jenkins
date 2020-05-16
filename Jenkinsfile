@@ -3,7 +3,7 @@ pipeline {
   environment {
     registry = "chelibane/jsapp"
     dockerImage = ""
-    dockerImg = ""
+    dockerImg = "s"
   }
 
   agent any
