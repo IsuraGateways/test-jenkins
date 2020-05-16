@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    registry = "https://harbor.asaru.info/front-01/myweb"
+    registry = "https://harbor.asaru.info/front-01/myweb:latest"
     dockerImage = ""
   }
 
@@ -18,7 +18,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build https://harbor.asaru.info/front-01/myweb:latest
+          dockerImage = docker.build registry
         }
       }
     }
