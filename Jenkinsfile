@@ -21,15 +21,11 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           sh '''
-           
-           echo ====+=====================================+=====
-          
-           
+           echo ====+=====================================+====
           '''
         }
       }
     }
-
 
     stage('Harbor') {
       steps {
@@ -41,7 +37,9 @@ pipeline {
            withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
            sh '''
              docker login -u $u -p $p harbor.asaru.info
-             docker image rm 192.168.1.81:5000/justme/myweb:$BUILD_NUMBER 192.168.1.81:5000/justme/myweb:26 192.168.1.81:5000/justme/myweb:27
+             docker tag 192.168.1.81:5000/justme/myweb:$BUILD_NUMBER harbor.asaru.info/front-01/test-netflix:0.0.$BUILD_NUMBER
+             
+             //docker image rm 192.168.1.81:5000/justme/myweb:$BUILD_NUMBER
              docker images
              '''
            } 
