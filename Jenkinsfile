@@ -36,14 +36,21 @@ pipeline {
              
              docker tag chelibane/jsapp:$BUILD_NUMBER harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER
              docker push harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER
-             docker image rm harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER chelibane/jsapp:$BUILD_NUMBER
-             
-             docker image rm harbor.asaru.info/public-01/test-netflix:0.0.38
-             docker images
-             
-             
              '''
            } 
+        }
+      }
+    }
+    
+    
+    stage ("Clean up") {
+      steps {
+        script {
+          sh '''
+            echo Cleanning up ...
+             docker image rm harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER chelibane/jsapp:$BUILD_NUMBER
+             docker images
+          '''
         }
       }
     }
