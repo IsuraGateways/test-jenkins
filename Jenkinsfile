@@ -23,7 +23,7 @@ pipeline {
           sh '''
            docker ps 
            echo ==========================================================================================
-           docker ps a
+           docker ps -a
            docker image rm d9c91ee0763a
            
           '''
