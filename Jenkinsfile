@@ -18,7 +18,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build -t https://harbor.asaru.info/front-01/myweb:latest .
+          dockerImage = docker.build -t "https://harbor.asaru.info/front-01/myweb:latest" .
         }
       }
     }
