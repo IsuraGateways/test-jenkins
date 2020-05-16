@@ -40,6 +40,7 @@ pipeline {
            sh '''
              docker login -u $u -p $p harbor.asaru.info
              docker tag 192.168.1.81:5000/justme/myweb:$BUILD_NUMBER harbor.asaru.info/front-01/test-netflix:0.0.$BUILD_NUMBER
+             docker push harbor.asaru.info/front-01/test-netflix:0.0.$BUILD_NUMBER
              docker images
              '''
            } 
