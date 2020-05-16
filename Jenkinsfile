@@ -24,8 +24,6 @@ pipeline {
            
            echo ====+=====================================+=====
           
-           docker image rm 192.168.1.81:5000/justme/myweb:$BUILD_NUMBER
-           docker images 
            
           '''
         }
@@ -41,7 +39,11 @@ pipeline {
           // some block
           // }
            withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
-           sh 'docker login -u $u -p $p harbor.asaru.info'
+           sh '''
+             docker login -u $u -p $p harbor.asaru.info
+             docker image rm 192.168.1.81:5000/justme/myweb:$BUILD_NUMBER 192.168.1.81:5000/justme/myweb:26 192.168.1.81:5000/justme/myweb:27
+             docker images
+             '''
            } 
         }
       }
