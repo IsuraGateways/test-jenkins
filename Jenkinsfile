@@ -28,10 +28,10 @@ pipeline {
     }
 
 
-    stage('Deploy App') {
+    stage('Harbor') {
       steps {
         script {
-          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
+          sh 'docker login -u admin -p Harbor12345 harbor.asaru.info'
         }
       }
     }
