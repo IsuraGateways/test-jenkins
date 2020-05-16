@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    registry = "192.168.1.81:5000/justme/myweb"
+    registry = "https://harbor.asaru.info/front-01/testing"
     dockerImage = ""
   }
 
@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/justmeandopensource/playjenkins.git'
+        git 'https://github.com/IsuraGateways/test-jenkins.git'
       }
     }
 
@@ -26,7 +26,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( "" ) {
+            docker.withDockerRegistry(credentialsId: 'harbor', url: 'https://harbor.asaru.info/front-01/testing') {
             dockerImage.push()
           }
         }
