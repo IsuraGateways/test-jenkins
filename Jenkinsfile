@@ -21,8 +21,8 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           sh '''
-           docker ps 
-           echo ==========================================================================================
+           docker images 
+           echo ====+=====================================+=====
            docker ps -a
            docker image rm d9c91ee0763a
            
