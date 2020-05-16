@@ -20,7 +20,9 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
-          dockerImg = docker.tag  dokerImage harbor.asaru.info/front-01/myweb:latest
+          sh '''
+           docker tag  dokerImage harbor.asaru.info/front-01/myweb:latest
+          '''
         }
       }
     }
