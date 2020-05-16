@@ -21,10 +21,10 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           sh '''
-           docker images 
+           
            echo ====+=====================================+=====
           
-           docker image rm 192.168.1.81:5000/justme/myweb:18 image rm 192.168.1.81:5000/justme/myweb:21 image rm 192.168.1.81:5000/justme/myweb:22 image rm 192.168.1.81:5000/justme/myweb:23
+           docker image rm 192.168.1.81:5000/justme/myweb:19 192.168.1.81:5000/justme/myweb:24 
            docker images 
            
           '''
