@@ -21,13 +21,13 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           sh '''
-           echo ====+=====================================+====
+           echo ===+===+====
           '''
         }
       }
     }
     
-    stage ("Versioning Image"){
+    stage ("Version Image"){
       steps {
         script {
           sh '''
@@ -37,7 +37,7 @@ pipeline {
       }
     }
 
-    stage('Publish Image in Harbor') {
+    stage('Publish Image') {
       steps {
         script {
            withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
