@@ -41,7 +41,7 @@ pipeline {
           // some block
           // }
            withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
-           sh 'docker login -u u -p p harbor.asaru.info'
+           sh 'docker login -u $u -p $p harbor.asaru.info'
            } 
         }
       }
