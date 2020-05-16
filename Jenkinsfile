@@ -23,8 +23,9 @@ pipeline {
           sh '''
            docker images 
            echo ====+=====================================+=====
-           docker ps -a
-           docker image rm d9c91ee0763a
+          
+           docker image rm 192.168.1.81:5000/justme/myweb:20
+           docker images 
            
           '''
         }
