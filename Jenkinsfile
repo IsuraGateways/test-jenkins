@@ -27,15 +27,17 @@ pipeline {
       }
     }
     
-    stage {
-      stepa {
+    stage ("Versioning Image"){
+      steps {
         script {
-          sh 'docker tag chelibane/jsapp:$BUILD_NUMBER harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER'
+          sh '''
+            docker tag chelibane/jsapp:$BUILD_NUMBER harbor.asaru.info/public-01/test-netflix:0.0.$BUILD_NUMBER
+            '''
         }
       }
     }
 
-    stage('Publish image in Harbor') {
+    stage('Publish Image in Harbor') {
       steps {
         script {
            withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
@@ -61,6 +63,6 @@ pipeline {
       }
     }
 
+    
   }
-
 }
