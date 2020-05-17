@@ -20,7 +20,7 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           sh '''
-           echo ===+===+====
+           echo =+==+===+====
           '''
         }
       }
